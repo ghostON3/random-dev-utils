@@ -1,0 +1,56 @@
+{
+  // "extends": "expo/tsconfig.base", // Extend Expo’s base TS config for React Native compatibility
+  "compilerOptions": {
+    "baseUrl": ".", // Base path for module resolution, useful for aliases below
+    "paths": {
+      // Path aliases for cleaner imports
+      "@atoms/*": ["src/commons/atoms/*"],
+      "@utils/*": ["src/commons/utils/*"],
+      "@components/*": ["src/commons/components/*"],
+      "@store/*": ["src/store/*"],
+      "~/*": ["src/*"],
+      "@assets/*": ["assets/*"],
+      "@colors-pallete": ["colors"]
+    },
+    "target": "es2020", // Target modern JS version; compatible with current JS engines
+    "module": "commonjs", // CommonJS modules; consider changing to "esnext" for better tree-shaking and compatibility with React Native bundler
+    "moduleResolution": "node", // Use Node-style module resolution
+    "allowJs": true, // Allow JavaScript files in the project; disable if fully TS to enforce stricter typing
+    "esModuleInterop": true, // Enables interoperability between CommonJS and ES Modules
+    "strict": true, // Enable all strict type-checking options (recommended)
+    "allowUnreachableCode": false, // Disallow unreachable code, helps catch logic errors
+    "noFallthroughCasesInSwitch": true, // Disallow fall-through in switch statements (good practice)
+    "noImplicitOverride": true, // Require explicit override keyword on class methods (recommended)
+    "noImplicitReturns": true, // Require functions to have consistent return behavior
+    "noPropertyAccessFromIndexSignature": true, // Prevents accessing properties via indexing when not declared
+    "noUncheckedIndexedAccess": true, // Adds undefined to types for indexed access (more safety)
+    "noUnusedLocals": false, // Disabled; consider enabling to find unused local variables
+    "noUnusedParameters": false, // Disabled; consider enabling to find unused function parameters
+    "outDir": "./dist", // Output directory for compiled files; unnecessary with "noEmit": true, so can be removed for clarity
+    "jsx": "react-native", // JSX transform target for React Native
+    "sourceMap": true, // Generate source maps for debugging
+    "lib": ["esnext"], // Include latest JS standard libraries
+    "skipLibCheck": true, // Skip type-checking declaration files to speed up builds
+    "allowSyntheticDefaultImports": true, // Allow default imports from modules without default exports
+    "forceConsistentCasingInFileNames": true, // Enforce consistent casing in import paths (important for cross-OS compatibility)
+    "resolveJsonModule": true, // Allows importing JSON files as modules
+    "isolatedModules": true, // Ensures each file can be transpiled independently (important for Babel/Metro)
+    "experimentalDecorators": true, // Enable decorators; only enable if using decorators
+    "noEmit": true, // Do not output compiled files (used with Babel/Metro in React Native)
+    "strictNullChecks": true // Enable strict null checking for safer code
+  },
+  "include": [
+    "./src", // Source files
+    "babel.config.js", // Include config files so TS can process imports
+    ".eslintrc.js",
+    ".prettierrc.js",
+    "jest.config.js",
+    "scripts",
+    "tailwind.config.js",
+    "App.tsx",
+    "App.test.tsx",
+    "colors.js",
+    "app.config.ts"
+  ],
+  "exclude": ["node_modules"] // Exclude dependencies from compilation
+}
